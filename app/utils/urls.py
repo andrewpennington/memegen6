@@ -75,10 +75,12 @@ def clean(url: str) -> str:
 
     # TODO: Fix Sanic bug?
     # https://github.com/jacebrowning/memegen/issues/799
+
+    #Gets hostname out of URL for the Swagger UI
     def extract_hostname(url):
         parsed_url = urlparse(url)
         return parsed_url.hostname
-
+    # makes URL become host name only
     hostname = extract_hostname(full_url)
     url = hostname
     
