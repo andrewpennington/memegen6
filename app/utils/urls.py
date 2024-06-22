@@ -1,5 +1,6 @@
 from urllib.parse import unquote, urlencode
 
+
 from furl import furl
 
 from .. import settings
@@ -74,6 +75,13 @@ def clean(url: str) -> str:
 
     # TODO: Fix Sanic bug?
     # https://github.com/jacebrowning/memegen/issues/799
-    url = url.replace("::", ":")
+    def extract_hostname(url):
+        parsed_url = urlparse(url)
+        return parsed_url.hostname
+
+    hostname = extract_hostname(full_url)
+    url = hostname
+    
+    
 
     return url
